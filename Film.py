@@ -62,9 +62,10 @@ class Film:
     def get_current_rating(self):
         return self.__rating / self.__marks
 
-    @staticmethod
-    def get_instance():
-        if not Film.__instance:
-            Film.__instance = Film()
-        return Film.__instance
+    @classmethod
+    def get_instance(cls):
+        if not cls.__instance:
+            cls.__instance = Film()
+        return cls.__instance
+
 
