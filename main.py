@@ -1,31 +1,32 @@
 from Film import Film
 
-film1 = Film("Титанік", "Джеймс Кемерон", 1997, 123, 15)
-film2 = Film("До зустрічі з тобою", "Теа Шеррок", 2016, 166, 20)
-film3 = Film("Гра престолів", "Марк Майлод", 2011, 190, 20)
+films = [
+    Film(),
+    Film("До зустрічі з тобою", "Теа Шеррок", 2016, 166, 20),
+    Film.get_instance(),
+    Film.get_instance()]
 
 print("Фільми з початковими параметрами:")
+for film in films:
+    print(film)
+print()
 
-print(film1, film2, film3, sep="\n", end="\n\n")
+print("Фільм зі зміненим рейтингом:")
 
-film1.rate(9)
-film2.rate(15)
-film3.rate(-1)
+films[1].rate(9)
 
-print("Фільми зі зміненим рейтингом:")
+print(films[1])
+print()
 
-print(film1, film2, film3, sep="\n", end="\n\n")
+print("Загальний рейтинг фільму:")
 
-print("Загальний рейтинг фільмів:")
-
-print(film1.get_current_rating(), film2.get_current_rating(), film3.get_current_rating(), sep="\n", end="\n\n")
-
-print("Робота property:")
-
-print(film1.title, end="\n\n")
+print(films[1].get_current_rating())
+print()
 
 print("Робота setter:")
 
-film1.director = "Настася Глушко"
+films[2].title = "Barabashka"
 
-print(film1)
+for film in films:
+    print(film)
+

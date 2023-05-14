@@ -1,5 +1,7 @@
 class Film:
-    def __init__(self, title, director, year, rating, marks):
+    __instance = None
+
+    def __init__(self, title="", director="", year=0, rating=0, marks=0):
         self.__title = title
         self.__director = director
         self.__year = year
@@ -59,3 +61,10 @@ class Film:
 
     def get_current_rating(self):
         return self.__rating / self.__marks
+
+    @staticmethod
+    def get_instance():
+        if not Film.__instance:
+            Film.__instance = Film()
+        return Film.__instance
+
