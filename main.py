@@ -21,12 +21,9 @@ print()
 print("Загальний рейтинг фільму:")
 
 print(films[1].get_current_rating())
-print()
 
-print("Робота setter:")
+numbers = list(range(-20, 1))
+print(numbers[1::2])
 
-films[2].title = "Barabashka"
 
-for film in films:
-    print(film)
 
