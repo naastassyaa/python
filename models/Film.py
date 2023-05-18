@@ -1,10 +1,11 @@
-class Film:
+from models.Video import Video
+
+
+class Film(Video):
     __instance = None
 
     def __init__(self, title="", director="", year=0, rating=0, marks=0):
-        self.title = title
-        self.director = director
-        self.year = year
+        super().__init__(title, director, year)
         self.rating = rating
         self.marks = marks
 
@@ -27,5 +28,3 @@ class Film:
         if not cls.__instance:
             cls.__instance = Film()
         return cls.__instance
-
-
