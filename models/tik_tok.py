@@ -15,6 +15,7 @@ class TikTok(Video):
             likes (int): The number of likes the TikTok video has received.
             views (int): The number of views the TikTok video has received.
             comments (int): The number of comments the TikTok video has received."""
+
     def __init__(  # pylint: disable=too-many-arguments
             self, title="", director="", year=0, name_of_song="", likes=0, views=0, comments=0):
         super().__init__(title, director, year)

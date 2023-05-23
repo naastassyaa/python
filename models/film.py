@@ -13,7 +13,6 @@ class Film(Video):
            year (int): The year when the film was released.
            rating (float): The overall rating of the film.
            marks (int): The number of ratings given to the film."""
-    __instance = None
 
     def __init__(  # pylint: disable=too-many-arguments
             self, title="", director="", year=0, rating=0, marks=0):
@@ -42,12 +41,3 @@ class Film(Video):
            Returns:
            float: The current rating of the film."""
         return self.rating / self.marks
-
-    @classmethod
-    def get_instance(cls):
-        """Get the singleton instance of the Film class.
-            Returns:
-            Film: The singleton instance of the Film class."""
-        if not cls.__instance:
-            cls.__instance = Film()
-        return cls.__instance

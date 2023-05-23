@@ -14,6 +14,7 @@ class Clip(Video):
             singer (str): The singer of the song featured in the clip.
             likes (int): The number of likes the clip has received.
             views (int): The number of views the clip has received."""
+
     def __init__(  # pylint: disable=too-many-arguments
             self, title="", director="", year=0, name_of_song="", singer="", likes=0, views=0):
         super().__init__(title, director, year)

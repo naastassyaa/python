@@ -15,6 +15,7 @@ class Cartoon(Video):
             number_of_characters (int): The number of characters in the cartoon.
             rating (float): The overall rating of the cartoon.
             marks (int): The number of ratings given to the cartoon."""
+
     def __init__(  # pylint: disable=too-many-arguments
             self, title="", director="", year=0, genre="", number_of_characters=0,
             rating=0, marks=0):
