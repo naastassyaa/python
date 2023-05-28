@@ -27,9 +27,9 @@ class SetManager:
         """Return an iterator object that can iterate over the videos in the video manager.
         Yields:
             Video: The next video in the video manager."""
-        for i in self.video_manager:
-            for j in i:
-                yield j
+        for video in self.video_manager:
+            for item in video:
+                yield item
 
     def __len__(self):
         """Return the number of videos in the SetManager.
