@@ -62,19 +62,25 @@ def validate_snake_case(func):
 
 
 def logged(exception, mode):
+    """A decorator that logs exceptions raised by the decorated function.
+        Args:
+            exception (Exception): The type of exception to be caught and logged.
+            mode (str): The logging mode. Can be either "console" or "file".
+        Returns:
+            function: The decorated function."""
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
-                result = func(*args, **kwargs)
-                return result
-            except exception as e:
+                return func(*args, **kwargs)
+            except exception as error:
                 if mode == "console":
                     logging.basicConfig(format='%(levelname)s - %(message)s')
-                    logging.error(e.message)
+                    logging.error(str(error))
                 elif mode == "file":
                     logging.basicConfig(filename='app.log', filemode='w',
                                         format='%(levelname)s - %(message)s')
-                    logging.error(e.message)
+                    logging.error(str(error))
+            return None
         return wrapper
 
     return decorator
