@@ -60,3 +60,5 @@ if __name__ == '__main__':
 
     print("Об'єкт з ліста за індексом:")
     print(set_videos[2])
+
+    list_videos[0].rate(11)

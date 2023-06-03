@@ -4,6 +4,7 @@ Module Contents:
 - validate_snake_case: A decorator that validates if
 a function name follows the snake case convention."""
 import datetime
+import logging
 
 
 def history(func):
@@ -58,3 +59,22 @@ def validate_snake_case(func):
         return func(*args, **kwargs)
 
     return wrapper
+
+
+def logged(exception, mode):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                result = func(*args, **kwargs)
+                return result
+            except exception as e:
+                if mode == "console":
+                    logging.basicConfig(format='%(levelname)s - %(message)s')
+                    logging.error(e.message)
+                elif mode == "file":
+                    logging.basicConfig(filename='app.log', filemode='w',
+                                        format='%(levelname)s - %(message)s')
+                    logging.error(e.message)
+        return wrapper
+
+    return decorator

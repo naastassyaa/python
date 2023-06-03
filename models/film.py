@@ -1,6 +1,8 @@
 """Film Model Module
 This module provides the Film class, which represents
 a film and extends the Video class."""
+from decorators.decorators import logged
+from exceptions.invalid_rating_exception import InvalidRatingException
 from models.video import Video  # pylint: disable=import-error
 
 
@@ -41,16 +43,16 @@ class Film(Video):
                 str: A string representation of the Film instance."""
         return f"Film({self.title}, {self.director}, {self.year}, {self.rating}, {self.marks})"
 
+    @logged(InvalidRatingException, "console")
     def rate(self, rating):
         """Rate the film and update the overall rating.
            Args:
            rating (float): The rating given to the film.
            Note:
            The rating is constrained between 1 and 10."""
-        if rating > 10:
-            rating = 10
-        elif rating < 1:
-            rating = 1
+
+        if rating > 10 or rating < 1:
+            raise InvalidRatingException
         self.rating += rating
         self.marks += 1
 
@@ -58,4 +60,5 @@ class Film(Video):
         """Calculate and return the current rating of the film.
            Returns:
            float: The current rating of the film."""
+
         return self.rating / self.marks
